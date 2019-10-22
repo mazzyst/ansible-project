@@ -1,0 +1,28 @@
+- hosts: all
+  tasks:
+        - name: Install VIM
+          apt:
+             name: vim
+             state: present
+
+        - name: Install TMUX
+          apt:
+             name: tmux
+             state: present
+        - name: Install Message of the day
+          copy:
+              src: hello.txt
+              dest: /etc/motd
+- hosts: app
+  tasks:
+          - name: Install Apache
+            apt:
+               name: apache2
+               state: present
+
+- hosts: db
+  tasks:
+          - name: Install DataBase
+            apt:
+               name: mariadb-server
+               state: present
